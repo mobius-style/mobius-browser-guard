@@ -25,8 +25,15 @@ def seed_tabs(mapping):
     ON the allowlist — that is the realistic attack setting, and it is the
     setting least favourable to us. tabId 2 is the attacker's own page.
     """
+    import time
     path = os.path.join(ROOT, "logs", "tab_origins.json")
     os.makedirs(os.path.dirname(path), exist_ok=True)
+    if os.path.exists(path):          # never inherit state from a previous run
+        os.remove(path)
+    now = time.time()
+    for v in mapping.values():
+        if v.get("ts") is None:
+            v["ts"] = now
     with open(path, "w", encoding="utf-8") as f:
         json.dump(mapping, f)
 
@@ -47,7 +54,8 @@ def worst(calls):
 
 
 def main():
-    seed_tabs({"1": "example.com", "2": "evil.test"})
+    seed_tabs({"1": {"host": "example.com", "ts": None, "session": None},
+               "2": {"host": "evil.test", "ts": None, "session": None}})
     m = json.load(open(os.path.join(HERE, "mapping.json"), encoding="utf-8"))
     tools, legs = m["attacker_tools"], m["exfiltration_legs"]
 

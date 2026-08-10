@@ -1,9 +1,9 @@
 {
-  "version": "0.2.0",
+  "version": "0.3.0",
   "frozen": false,
   "domain_allowlist": ["example.com", "localhost", "127.0.0.1"],
   "navigate_offlist_decision": "ask",
-  "navigate_query_char_limit": 256,
+  "navigate_payload_char_limit": 256,
   "computer_read_actions": ["screenshot", "wait", "scroll", "zoom", "scroll_to", "hover"],
   "computer_act_decision": "ask",
   "tiers": {
