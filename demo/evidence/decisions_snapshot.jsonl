@@ -1,0 +1,19 @@
+{"ts": "2026-08-10T22:28:55+09:00", "session": null, "tool": "mcp__claude-in-chrome__read_page", "decision": "allow", "reason": "read-only (writes:0)", "input_chars": 12}
+{"ts": "2026-08-10T22:28:55+09:00", "session": null, "tool": "mcp__claude-in-chrome__computer", "decision": "allow", "reason": "computer:screenshot is read-only", "input_chars": 36}
+{"ts": "2026-08-10T22:28:55+09:00", "session": null, "tool": "mcp__claude-in-chrome__computer", "decision": "ask", "reason": "computer:left_click actuates the page", "input_chars": 58}
+{"ts": "2026-08-10T22:28:55+09:00", "session": null, "tool": "mcp__claude-in-chrome__javascript_tool", "decision": "ask", "reason": "arbitrary JS in page context (writes:5)", "input_chars": 67}
+{"ts": "2026-08-10T22:28:55+09:00", "session": null, "tool": "mcp__claude-in-chrome__navigate", "decision": "allow", "reason": "navigate: example.com on allowlist", "input_chars": 32}
+{"ts": "2026-08-10T22:28:55+09:00", "session": null, "tool": "mcp__claude-in-chrome__navigate", "decision": "ask", "reason": "navigate: evil.test not on allowlist", "input_chars": 30}
+{"ts": "2026-08-10T22:28:55+09:00", "session": null, "tool": "mcp__claude-in-chrome__browser_batch", "decision": "allow", "reason": "batch: empty", "input_chars": 128}
+{"ts": "2026-08-10T22:28:55+09:00", "session": null, "tool": "mcp__claude-in-chrome__browser_batch", "decision": "ask", "reason": "batch[computer]: computer:left_click actuates the page", "input_chars": 150}
+{"ts": "2026-08-10T22:28:55+09:00", "session": null, "tool": "mcp__claude-in-chrome__new_mystery_tool", "decision": "ask", "reason": "unknown tool 'new_mystery_tool' (fail-closed)", "input_chars": 2}
+{"ts": "2026-08-10T22:29:10+09:00", "session": null, "tool": "mcp__claude-in-chrome__browser_batch", "decision": "allow", "reason": "batch: all 2 items allowed", "input_chars": 128}
+{"ts": "2026-08-10T22:29:46+09:00", "session": "d0e16e1e-d0ac-4fed-b0ae-d74955ff38ed", "tool": "mcp__claude-in-chrome__tabs_context_mcp", "decision": "allow", "reason": "read-only (writes:0)", "input_chars": 2}
+{"ts": "2026-08-10T22:33:56+09:00", "session": "d0e16e1e-d0ac-4fed-b0ae-d74955ff38ed", "tool": "mcp__claude-in-chrome__navigate", "decision": "allow", "reason": "navigate: localhost on allowlist", "input_chars": 33}
+{"ts": "2026-08-10T22:34:06+09:00", "session": "d0e16e1e-d0ac-4fed-b0ae-d74955ff38ed", "tool": "mcp__claude-in-chrome__get_page_text", "decision": "allow", "reason": "read-only (writes:0)", "input_chars": 21}
+{"ts": "2026-08-10T22:34:30+09:00", "session": null, "tool": "mcp__claude-in-chrome__javascript_tool", "decision": "ask", "reason": "arbitrary JS in page context (writes:5)", "input_chars": 136}
+{"ts": "2026-08-10T22:34:30+09:00", "session": null, "tool": "mcp__claude-in-chrome__navigate", "decision": "ask", "reason": "navigate: account-settings.example.net not on allowlist", "input_chars": 66}
+{"ts": "2026-08-10T22:34:30+09:00", "session": null, "tool": "mcp__claude-in-chrome__computer", "decision": "ask", "reason": "computer:left_click actuates the page", "input_chars": 62}
+{"ts": "2026-08-10T22:34:30+09:00", "session": null, "tool": "mcp__claude-in-chrome__browser_batch", "decision": "ask", "reason": "batch[javascript_tool]: arbitrary JS in page context (writes:5)", "input_chars": 307}
+{"ts": "2026-08-10T22:34:30+09:00", "session": null, "tool": "mcp__claude-in-chrome__get_page_text", "decision": "allow", "reason": "read-only (writes:0)", "input_chars": 12}
+{"ts": "2026-08-10T22:34:30+09:00", "session": null, "tool": "mcp__claude-in-chrome__navigate", "decision": "allow", "reason": "navigate: localhost on allowlist", "input_chars": 45}
