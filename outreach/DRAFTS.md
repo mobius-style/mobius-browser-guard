@@ -4,6 +4,12 @@
 This file keeps the alternates and the working notes. Nothing here has been
 posted; posting is manual (no API access to either platform from this toolchain).
 
+## Language
+
+**English only.** No Japanese versions of these posts. The audience is the
+international agent-security community, which is where the corpus, the prior
+work and the reviewers all come from.
+
 ## How to post
 
 1. **LinkedIn** — paste the body of `POST_linkedin_A.md` (2,534 characters, under

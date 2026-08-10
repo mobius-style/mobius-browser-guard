@@ -178,6 +178,21 @@ not address, and cannot address, belief manipulation: a page that feeds the
 agent false information to relay to the user passes every action check, because
 no action is taken.
 
+## Note on two labels in the registration
+
+`FREEZE.md` grades claims with three labels from the research-methodology
+standard this project works to, written in Japanese in the original:
+
+- 【実証中】 — *empirically supported*: one study of adequate quality. Applied
+  here to RQ1's findings (confirmatory for the frozen policy only) and to RQ2
+  (descriptive).
+- 【実務則】 — *practitioner rule*: a working heuristic, not an empirical claim.
+  Applied to any generalization beyond this tool surface.
+
+`FREEZE.md` is deliberately left byte-identical so that its recorded SHA-256
+still verifies; the gloss lives here instead of being edited into the sealed
+file.
+
 ## Method notes
 
 - Deterministic. No model, no network, no browser at eval time; only `guard.py`
