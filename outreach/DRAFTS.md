@@ -130,7 +130,7 @@ part worth reading.
    same adversarial pass as the thing it fixes.
 
 **Notes for the write-up**
-- Link the repo, the figure, and the paper DOI once the deposit is live.
+- Repo: github.com/mobius-style/mobius-browser-guard. Paper DOI: 10.5281/zenodo.21876300 (draft deposited; the link goes live only when the owner publishes it — do not post the DOI before then).
 - Do not claim novelty of mechanism: CaMeL, the design-pattern catalogue and the
   dual-LLM pattern all occupy this position already. The contribution is the
   measurement of the coarse, post-hoc, installable version — and the failures.

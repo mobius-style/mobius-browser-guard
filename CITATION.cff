@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the accompanying paper."
+title: mobius-browser-guard
+abstract: >-
+  An auditable, bounded mediation layer for Claude in Chrome browser actions.
+  Content-blind action gating, published together with its own failure map.
+authors:
+  - family-names: Toeda
+    given-names: Taiko
+    affiliation: MOBIUS LLC
+    orcid: https://orcid.org/0009-0001-7267-0201
+license: MIT
+repository-code: https://github.com/mobius-style/mobius-browser-guard
+preferred-citation:
+  type: article
+  title: >-
+    Three Patterns Defeat an Action Ladder: What a Detection-Independent Gate
+    for a Browser Agent Does and Does Not Contain
+  authors:
+    - family-names: Toeda
+      given-names: Taiko
+      affiliation: MOBIUS LLC
+      orcid: https://orcid.org/0009-0001-7267-0201
+  year: 2026
+  doi: 10.5281/zenodo.21876300

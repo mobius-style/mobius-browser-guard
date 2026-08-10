@@ -219,6 +219,17 @@ human decision is forced regardless of how the attack is phrased — but the
 guarantee is exactly as strong as the claim that the allow set is effect-free,
 which this gate does not enforce and which currently does not hold.
 
+## Citation
+
+Toeda, T. (2026). *Three Patterns Defeat an Action Ladder: What a
+Detection-Independent Gate for a Browser Agent Does and Does Not Contain.*
+MOBIUS LLC. DOI: [10.5281/zenodo.21876300](https://doi.org/10.5281/zenodo.21876300).
+
+The paper reports this gate's own failures — the residual attack surface, the
+deviations from our registration, and two rounds in which a fix we published
+carried a hole of the same class as the one it closed. Read it before relying on
+this.
+
 ## License
 
 MIT
