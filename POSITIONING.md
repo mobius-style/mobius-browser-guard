@@ -56,7 +56,17 @@ explainable check that bounds *what can happen* rather than guessing *what is
 malicious*. The recommendation carried out here applies to all of them: sell the
 bounded, auditable property and publish the boundary; never sell "safe."
 
-## The process lesson
+## The process lesson, revised once already
+
+The first version of this section said the adversarial pass is the reason to
+believe a safety claim. A second round then reviewed the *paper* about the gate
+and found that our fix for a reviewer-found hole had introduced a worse one — a
+page could forge its own origin — plus four fail-opens, each contradicting a
+claim we had just published. So the lesson needs a second clause: **a fix
+authored in response to a finding needs the same adversarial pass as the thing
+it fixes.** Ours did not get one, and shipped a critical hole for a day.
+
+
 
 The most valuable step in this project was not building the gate. It was handing
 the gate to independent adversarial reviewers instructed to refute our findings.

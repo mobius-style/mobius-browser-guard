@@ -3,6 +3,11 @@
 A drop-in permission gate for **Claude in Chrome** browser tools, driven by an
 **action ladder** instead of attack detection.
 
+> **v0.3.0 fixes a critical hole introduced by v0.2.0's own fix.** The tab-origin
+> map was learned by scanning any tool response, so a page could forge its own
+> origin by printing a tab-context line in its body. If you installed v0.2.0,
+> update. Details in [`eval/adversarial_review.md`](eval/adversarial_review.md).
+>
 > **Read [`POSITIONING.md`](POSITIONING.md) first.** This is an *auditable,
 > bounded mediation layer*, not a safety guarantee. Its evaluation found that
 > every one of 63 corpus attacker goals stays reachable inside the allow tier —
@@ -40,7 +45,7 @@ Verdicts are `allow` / `ask`, applied per tool call via a `PreToolUse` hook:
 | Window & session (writes:1) | `tabs_create_mcp`, `tabs_close_mcp`, `resize_window`, `select_browser` | allow |
 | Page write (writes:3) | `form_input`, `upload_image` | allow **only into a tab on an allowlisted host**; otherwise ask |
 | Actuation (writes:4–5) | `computer` (click/type/key), `javascript_tool`, `file_upload`, `shortcuts_execute` | **ask** |
-| Navigation | `navigate` | allow on allowlist (exact host, or an explicit `*.domain` entry) with a bounded query/fragment; else **ask** |
+| Navigation | `navigate` | allow on allowlist (exact host, or an explicit `*.domain` entry) with a bounded post-host payload; else **ask** |
 | Recording export | `gif_creator` | allow to record; **ask** to export onto a page or to disk |
 | Unknown / unparseable | anything not in the ladder | **ask** (fail-closed) |
 
@@ -54,7 +59,10 @@ CRM is routine; `form_input` typing a session token into an `<input>` on the
 page that just tried to hijack the agent is exfiltration, and no submit button
 is involved. So the gate tracks which host each tab is on (from tool output, via
 a PostToolUse hook) and allows writes only into tabs on allowlisted hosts.
-Unknown tab, unknown origin, fail closed. The same rule covers `upload_image`,
+Unknown tab, unknown origin, expired origin, or an origin learned by a different
+session: fail closed. Only structural tools teach that map — never a read tool,
+because a read returns attacker-authored text and v0.2.0 scraped it, which let a
+page name its own tab as trusted. The same rule covers `upload_image`,
 which can drag-and-drop a screenshot of an authenticated page onto any drop
 target — a full-fidelity egress channel that looks nothing like one.
 
