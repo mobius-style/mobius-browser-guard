@@ -1,8 +1,20 @@
 # Evaluation results
 
 Pre-registered in `FREEZE.md` (sha256 `9c6a7b44…`, frozen 2026-08-10 before any
-corpus data was fetched). Gate under test: `guard.py` @ `073f223`, `policy.json`
-v0.1.0 shipped defaults. Raw output: `results.json`.
+corpus data was fetched).
+
+**Provenance, stated plainly because an earlier version of this file got it
+wrong.** The numbers below were first produced against `policy.json` v0.1.0. The
+committed `results.json` is *not* that run: the harness overwrites it in place,
+so each subsequent version's run replaced the file, and `results.json` now holds
+the newest run with its own `gate_commit` field. The v0.1.0 raw output is
+therefore recoverable only from git history (`git show 2c9db6b:eval/results.json`),
+not from the working tree. `FREEZE.md` required that a later change "re-runs the
+eval and is reported separately"; overwriting in place violated that, and this
+paragraph is the disclosure rather than a silent correction. The counts have not
+changed across v0.1.0, v0.2.0 and v0.3.0 — verified by diffing those runs — but a
+reader should not have to take that on trust, and the fix is to write versioned
+result files, which is not yet done.
 
 ## Summary
 

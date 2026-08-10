@@ -104,3 +104,45 @@ a content check, so the no-detection property is preserved.
   primary use case; documented rather than removed.
 - **Tool-schema drift.** The ladder is pinned to tool names and argument shapes
   observed on 2026-08-10. New arguments on existing tools fail open.
+
+
+## Second round — adversarial review of the paper about this gate
+
+A draft systems report describing v0.2.0 was put to two further independent
+reviewers: one instructed to reject it as a hostile venue reviewer, one to
+fact-check every claim against the artifacts. Both read the implementation.
+Their findings were more damaging than the first round's, and all of the code
+findings reproduced.
+
+**Critical — the system was not content-blind, though `classify()` was.**
+`record_tab_origin()` scanned any tool response, including page text. A page
+could therefore print a tab-context line naming its own tab as an allowlisted
+host, and the write channels closed in v0.2.0 re-opened. This is the sharpest
+finding in either round: the fix for one reviewer-found hole introduced a worse
+one, in the exact component that was supposed to make the fix sound. Fixed in
+v0.3.0 — only structural tools teach the origin map, and only their trailing
+context block is parsed.
+
+**Four fail-open defects, each contradicting a claim the draft made.**
+
+| Defect | The claim it falsified |
+|---|---|
+| egress bounding measured query and fragment but not the path | "bulk data in a query string ... allow → ask" — one character defeated it |
+| a batch whose payload sat under another key, or was not a list, passed with its nested calls unclassified | "our gate recurses and rules by the worst nested class"; "unparseable arguments fail closed" |
+| an unrecognized `gif_creator` action was allowed by default | "gif export → ask" |
+| a recorded tab origin was trusted forever and across sessions | "recovers the property for a defined subset" |
+
+All five are fixed in v0.3.0 with regression tests (42/42). The lesson we take
+is narrower and more uncomfortable than the first round's: **a fix authored in
+response to a finding deserves the same adversarial pass as the original
+artifact.** Ours did not get one, and it shipped a critical hole for a day.
+
+**Documentation defects the fact-checker found**, recorded here rather than
+quietly corrected: `RESULTS.md` named a gate commit that did not match the
+committed `results.json` (now disclosed at the top of that file); the draft
+attributed a "default to not-a-hole" instruction to `FREEZE.md`, which does not
+contain it; `FREEZE.md` registered AgentDojo, WASP and ST-WebAgentBench as data
+sources and only InjecAgent was used, which is a pre-registration deviation and
+not merely a design choice; pre-registered RQ3 was under-reported; and the
+partition of InjecAgent's tools into act/read/download is ours, not the
+corpus's — `GmailSendEmail` and one other were moved into the act set.
