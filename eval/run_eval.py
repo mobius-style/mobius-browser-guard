@@ -18,6 +18,19 @@ GUARD = os.path.join(ROOT, "guard.py")
 P = "mcp__claude-in-chrome__"
 
 
+def seed_tabs(mapping):
+    """Set the tab->host state the eval assumes, deterministically.
+
+    tabId 1 is the target application the user pointed the agent at, so it is
+    ON the allowlist — that is the realistic attack setting, and it is the
+    setting least favourable to us. tabId 2 is the attacker's own page.
+    """
+    path = os.path.join(ROOT, "logs", "tab_origins.json")
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(mapping, f)
+
+
 def verdict(c):
     out = subprocess.run(
         [sys.executable, GUARD],
@@ -34,6 +47,7 @@ def worst(calls):
 
 
 def main():
+    seed_tabs({"1": "example.com", "2": "evil.test"})
     m = json.load(open(os.path.join(HERE, "mapping.json"), encoding="utf-8"))
     tools, legs = m["attacker_tools"], m["exfiltration_legs"]
 
