@@ -4,8 +4,10 @@ Drafts only. Posting is the owner's decision; nothing here has been published to
 any external platform. Every number is from
 `eval/results_policy_v0.3.1.json` or from a verdict re-run against `guard.py`.
 
-Figure for both posts: `outreach/figure.html` (published privately as an
-artifact; export to PNG before posting, since neither platform renders HTML).
+Images, already exported (neither platform renders HTML):
+- `outreach/figure_hero.png` (2360×2000) — LinkedIn. Headline, the action ladder, the four headline numbers.
+- `outreach/figure_full_light.png` (2360×4240) — Medium. Everything, including the review rounds and the cost bars.
+Sources: `figure.html` (theme-aware, also published as an artifact), `figure_export.html` / `figure_hero.html` (light-locked, used for the PNGs).
 
 ---
 
@@ -132,7 +134,7 @@ part worth reading.
    same adversarial pass as the thing it fixes.
 
 **Notes for the write-up**
-- Repo: github.com/mobius-style/mobius-browser-guard. Paper DOI: 10.5281/zenodo.21876300 (draft deposited; the link goes live only when the owner publishes it — do not post the DOI before then).
+- Repo: github.com/mobius-style/mobius-browser-guard. Paper DOI: 10.5281/zenodo.21876300 — **published 2026-08-11**, https://zenodo.org/record/21876300 . Safe to cite in posts.
 - Do not claim novelty of mechanism: CaMeL, the design-pattern catalogue and the
   dual-LLM pattern all occupy this position already. The contribution is the
   measurement of the coarse, post-hoc, installable version — and the failures.

@@ -223,7 +223,7 @@ which this gate does not enforce and which currently does not hold.
 
 Toeda, T. (2026). *Three Patterns Defeat an Action Ladder: What a
 Detection-Independent Gate for a Browser Agent Does and Does Not Contain.*
-MOBIUS LLC. DOI: [10.5281/zenodo.21876300](https://doi.org/10.5281/zenodo.21876300).
+MOBIUS LLC. DOI: [10.5281/zenodo.21876300](https://doi.org/10.5281/zenodo.21876300) (published 2026-08-11).
 
 The paper reports this gate's own failures — the residual attack surface, the
 deviations from our registration, and two rounds in which a fix we published

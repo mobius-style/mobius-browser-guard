@@ -1,4 +1,4 @@
-<title>What a detection-independent gate actually contains</title>
+<!doctype html><html data-theme="light"><head><meta charset="utf-8"><style>html,body{margin:0;padding:0;background:#fcfcfb}</style></head><body><title>What a detection-independent gate actually contains</title>
 <style>
   .viz-root {
     color-scheme: light;
@@ -105,60 +105,6 @@ three are declared scope, not defects: reading an authenticated page is what a b
   <div class="tile"><div class="n">1</div><div class="c">is a genuine gap: forms that commit on input</div></div>
 </div>
 
-<h2>What adversarial review found that we did not</h2>
-<p class="note">Reviewers were instructed to <em>refute</em> our findings and to default to "not a hole".
-They rejected three of our claimed holes as declared scope — then found sharper ones. The second round
-reviewed the paper and found that our own fix had opened a worse hole than it closed.</p>
-
-<div class="scroll">
-<table>
-  <thead><tr><th>Round</th><th>Found by us</th><th>Found by reviewers</th><th>Of ours, rejected as non-defects</th></tr></thead>
-  <tbody>
-    <tr><td>1 — the gate</td><td class="v">5</td><td class="v" style="color:var(--stop)">5</td><td class="v">3</td></tr>
-    <tr><td>2 — the paper about the gate</td><td class="v">0</td><td class="v" style="color:var(--stop)">5 <span style="font-weight:400;color:var(--text-secondary)">(1 critical)</span></td><td class="v">—</td></tr>
-    <tr><td>3 — the revised paper</td><td class="v">0</td><td class="v" style="color:var(--stop)">1 <span style="font-weight:400;color:var(--text-secondary)">(round 2's fix was incomplete)</span></td><td class="v">—</td></tr>
-  </tbody>
-</table>
-</div>
-<p class="note">The critical one: the component added in round 1 to fix a reviewer's finding learned tab origins
-by scanning any tool response — so a page could forge its own origin by printing one line in its body, and
-two "closed" channels re-opened. And the fix for <em>that</em> was itself incomplete — a third
-round found the parser still fell back to scanning the whole response when no context block was present.
-Closed in v0.3.1. <strong>Twice in a row, a fix written in response to a finding carried a hole of the same
-class as the one it closed.</strong></p>
-
-<h2>What it costs to run</h2>
-<p class="note">Prompts per task across 18 benign traces. The cost lands on commits and on unfamiliar hosts —
-never on reading. Overall <strong>85.7%</strong> of benign calls proceed silently.</p>
-
-<div>
-  <div class="bar-wrap"><span class="bar-label">Read-only research</span>
-    <div class="track"><div class="fill" style="width:2%;background:var(--pass)"></div><span class="bar-val">0.00</span></div></div>
-  <div class="bar-wrap"><span class="bar-label">Form fill, no submit</span>
-    <div class="track"><div class="fill" style="width:2%"></div><span class="bar-val">0.00</span></div></div>
-  <div class="bar-wrap"><span class="bar-label">Multi-tab comparison</span>
-    <div class="track"><div class="fill" style="width:2%"></div><span class="bar-val">0.00</span></div></div>
-  <div class="bar-wrap"><span class="bar-label">Form fill and submit</span>
-    <div class="track"><div class="fill" style="width:60%"></div><span class="bar-val">1.00</span></div></div>
-  <div class="bar-wrap"><span class="bar-label">Write to a tab of unknown origin</span>
-    <div class="track"><div class="fill" style="width:60%"></div><span class="bar-val">1.00</span></div></div>
-  <div class="bar-wrap"><span class="bar-label">Open-web research (off allowlist)</span>
-    <div class="track"><div class="fill" style="width:80%"></div><span class="bar-val">1.33</span></div></div>
-</div>
-<p class="note">Prompts scale with the number of <em>new hosts visited</em>, so a session touching many
-unfamiliar sites costs proportionally more. On work confined to sites you have allowlisted, the ladder is
-close to free.</p>
-
-<h2>What can honestly be claimed</h2>
-<p class="note">For any attacker goal whose <em>every</em> route requires an ask-class action, a human decision
-is forced — regardless of how the attack is phrased, because the classifier never reads content.
-That guarantee is exactly as strong as the claim that the allow tier is effect-free.
-<strong>It is not.</strong> So we publish the residual attack surface instead of a safety claim.</p>
-
-<footer>
-Verdicts produced by mobius-browser-guard v0.3.1; cost figures from <code>eval/results_policy_v0.3.1.json</code> (18 traces, 70 calls, 60 allowed).
-Code, evaluation harness, pre-registration, reviewer records and the residual-hole list:
-github.com/mobius-style/mobius-browser-guard (MIT).
-</footer>
-
-</div>
+<footer style="margin-top:2rem">Full results, the residual attack surface, and the code:
+github.com/mobius-style/mobius-browser-guard (MIT). Measured on v0.3.1.</footer>
+</div></body></html>
