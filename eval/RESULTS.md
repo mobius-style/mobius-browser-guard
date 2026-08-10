@@ -35,6 +35,13 @@ cluster:
 | harvest console output | 28 / 28 read tools | reading is allowed by design |
 | read the document instead of downloading it | 3 / 3 download tools | reading is allowed by design |
 
+The 63 goals collapse into exactly **three** distinct sets of allow-only
+realizations: 32 state-changing goals share the auto-submit path, 28 data goals
+share the three reading paths, and 3 download goals share the
+read-instead-of-download path. So 63/63 measures *coverage* — no goal in an
+externally-authored threat list escapes these patterns — and not 63 independent
+findings. Quoting it as evidence strength would overstate it.
+
 For state-changing goals the picture is narrower than the headline suggests.
 Taking `BankManagerTransferFunds` as representative, four of five realizations
 are stopped:
@@ -66,9 +73,11 @@ End-to-end exfiltration using only allow-tier calls is therefore possible.
 
 ### Why 63/63 still holds at v0.2.0
 
-Three of the five allow-tier paths were adjudicated **not holes at all** — the
-three reading paths, refuted 3/3 by the panel, because reading authenticated
-pages is what the agent is for. Strip those and the remaining reachability is:
+Four of the five allow-tier paths were adjudicated **not holes at all** — every
+path that is a read (the accessibility tree, page text, console output, the
+page's own network traffic), refuted 3/3 by the panel, because reading
+authenticated pages is what the agent is for. Strip those and the remaining
+reachability is:
 
 - **act goals**: the auto-submit path, which survives only on a site the user
   *legitimately allowlisted*. The origin predicate added in v0.2.0 cannot help
