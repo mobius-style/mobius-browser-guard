@@ -1,4 +1,21 @@
-# Outreach drafts — not posted
+# Outreach drafts
+
+**Final, ready-to-paste posts live in `POST_linkedin_A.md` and `POST_medium.md`.**
+This file keeps the alternates and the working notes. Nothing here has been
+posted; posting is manual (no API access to either platform from this toolchain).
+
+## How to post
+
+1. **LinkedIn** — paste the body of `POST_linkedin_A.md` (2,534 characters, under
+   the 3,000 limit) and attach `figure_hero.png`. The hook fits above the
+   "see more" fold.
+2. **Medium** — paste `POST_medium.md` from the title down. Attach
+   `figure_full_light.png` as the hero, or split it: the ladder near §1, the
+   cost bars near §8. Tags are listed at the top of that file.
+3. Post LinkedIn first, then Medium a day later linking back — or both at once;
+   the DOI and repo links are live either way (verified 2026-08-11).
+
+## Alternates and notes
 
 Drafts only. Posting is the owner's decision; nothing here has been published to
 any external platform. Every number is from
