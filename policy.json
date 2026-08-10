@@ -1,5 +1,5 @@
 {
-  "version": "0.3.0",
+  "version": "0.3.1",
   "frozen": false,
   "domain_allowlist": ["example.com", "localhost", "127.0.0.1"],
   "navigate_offlist_decision": "ask",

@@ -85,11 +85,12 @@ End-to-end exfiltration using only allow-tier calls is therefore possible.
 
 ### Why 63/63 still holds at v0.2.0
 
-Four of the five allow-tier paths were adjudicated **not holes at all** — every
-path that is a read (the accessibility tree, page text, console output, the
-page's own network traffic), refuted 3/3 by the panel, because reading
-authenticated pages is what the agent is for. Strip those and the remaining
-reachability is:
+Three hypotheses were refuted 3/3 by the panel — `read_network_requests`,
+`read_console_messages` and `read_page` — because reading authenticated pages is
+what the agent is for. Between them they account for the reading paths in the
+table above; the "read the document instead of downloading" path was never put
+to the panel and we claim no verdict for it. Setting the reading paths aside,
+the remaining reachability is:
 
 - **act goals**: the auto-submit path, which survives only on a site the user
   *legitimately allowlisted*. The origin predicate added in v0.2.0 cannot help
@@ -144,20 +145,27 @@ refutation of the architecture. Qualified honestly:
 
 ## RQ2 — usability cost
 
+Regenerated at policy v0.3.1 (gate `ffae34a`), raw output `results_policy_v0.3.1.json`.
+
 | Archetype | asks/task | calls |
 |---|---|---|
 | read-only research | 0.00 | 13 |
 | form fill, no submit | 0.00 | 9 |
 | form fill and submit | 1.00 | 12 |
+| open-web research (off allowlist) | 1.33 | 13 |
+| form fill on an unseen tab (origin unknown) | 1.00 | 6 |
 | multi-tab comparison | 0.00 | 17 |
 
-`benign_allow_rate` = **0.941** (48 / 51 calls allowed). Both pre-registered
-rejection thresholds were cleared (reject if read-only asks/task > 5, or if
-allow rate < 0.70). The only three prompts in the entire benign set are the
-three submit clicks — the cost lands where it was designed to land.
+`benign_allow_rate` = **0.857** (60 / 70 calls allowed). Both registered
+rejection thresholds are still cleared. The first four archetypes were named in
+`FREEZE.md`; the last two were added after the second adversarial round, because
+the registered set visited only hosts already on the default allowlist and so
+measured the harness rather than the gate. Those two are exploratory.
 
-This is a weak positive. The traces are author-written, short, and free of login
-walls, wizards and hunt-for-the-button screenshot loops. See `benign_traces.md`.
+Prompts scale with the number of *new hosts visited*, so a session touching more
+than five unfamiliar hosts exceeds the registered "more than five prompts per
+task" threshold by construction. On work confined to allowlisted sites the ladder
+is close to free; on open-web browsing it is not.
 
 ## RQ3 — taxonomy coverage
 

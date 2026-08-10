@@ -146,3 +146,34 @@ sources and only InjecAgent was used, which is a pre-registration deviation and
 not merely a design choice; pre-registered RQ3 was under-reported; and the
 partition of InjecAgent's tools into act/read/download is ours, not the
 corpus's — `GmailSendEmail` and one other were moved into the act set.
+
+
+## Third round — re-review of the revised paper
+
+The revised paper was returned to the hostile reviewer with its prior objections
+listed, and asked which were discharged. Nine of twelve were; the finding that
+matters is the one that was not.
+
+**The round-two critical fix was incomplete.** `record_tab_origin` sliced at the
+last `Tab Context:` marker — but with no marker present it fell back to scanning
+the entire response with the JSON-shaped pattern. A tool result can echo an
+attacker-chosen URL, so the fallback was a second forgery channel of exactly the
+class the fix existed to close. Demonstrated by the reviewer, reproduced, and
+closed in v0.3.1: absent a genuine context block the guard now learns nothing.
+Regression test added (43 tests).
+
+Two consecutive rounds have now found that a fix authored in response to a
+finding carried a hole of the same class as the one it closed. The transferable
+result is the pattern, not either bug: **treat a security fix as a new artifact
+requiring its own adversarial pass, and specifically probe the fallback branch
+of any parser you add** — the happy path gets tested, the absent-input path does
+not.
+
+The same round found documentation drift we had not: `RESULTS.md` and
+`benign_traces.md` still described the four-archetype, 0.941 run after the paper
+had moved to six archetypes and 0.857; `results.json` carried a `gate_commit`
+from a tree other than the one that produced it; and our "four of the five
+allow-tier paths were refuted" over-counted what the panel actually ruled on —
+three hypotheses were refuted, and one reading path was never put to them at
+all. All corrected, and the version-stamped result files now make the first
+class of drift detectable rather than a matter of trust.
