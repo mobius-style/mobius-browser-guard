@@ -3,10 +3,12 @@
 A drop-in permission gate for **Claude in Chrome** browser tools, driven by an
 **action ladder** instead of attack detection.
 
-> **v0.3.0 fixes a critical hole introduced by v0.2.0's own fix.** The tab-origin
-> map was learned by scanning any tool response, so a page could forge its own
-> origin by printing a tab-context line in its body. If you installed v0.2.0,
-> update. Details in [`eval/adversarial_review.md`](eval/adversarial_review.md).
+> **Update to v0.3.1 if you installed v0.2.0 or v0.3.0.** v0.2.0's own fix
+> introduced a critical hole — the tab-origin map was learned by scanning any
+> tool response, so a page could forge its own origin by printing a tab-context
+> line in its body. v0.3.0 closed most of it and v0.3.1 closed the rest: the
+> parser still fell back to scanning the whole response when no context block was
+> present. Details in [`eval/adversarial_review.md`](eval/adversarial_review.md).
 >
 > **Read [`POSITIONING.md`](POSITIONING.md) first.** This is an *auditable,
 > bounded mediation layer*, not a safety guarantee. Its evaluation found that
