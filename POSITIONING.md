@@ -18,12 +18,26 @@ decision safe.
 ## The claim we do NOT make
 
 We do not claim the agent is safe with this installed. The guarantee is exactly
-as strong as the proposition *"the allow tier is effect-free"*, and adversarial
-review showed that proposition is false: 63 of 63 corpus attacker goals have a
-realization that stays inside the allow tier. Four of the sharpest such channels
-were closed in v0.2.0; the reachability count did not change; more channels
-almost certainly exist. `eval/adversarial_review.md` lists the ones we know
-about and have not fixed.
+as strong as the proposition *"the allow tier is effect-free"*, and evaluation
+showed that proposition is false: 63 of 63 corpus attacker goals have a
+realization that stays inside the allow tier. Four of the sharpest channels were
+closed in v0.2.0; the reachability count did not change; more channels almost
+certainly exist. `eval/adversarial_review.md` lists the ones we know about and
+have not fixed.
+
+Read that number precisely, because it is easy to misread in either direction.
+Most of the reachability comes from **reading** — page text, the accessibility
+tree, the page's own console and network traffic — and three independent
+reviewers unanimously judged those to be declared scope rather than defects: an
+agent that cannot read an authenticated page is not an agent, and reading alone
+delivers nothing to a web page that cannot see the model's context. Strip those
+and what remains is two genuine gaps: a form that commits on input with no
+click, on a site the user themselves allowlisted; and a short query string to an
+allowlisted host. On the state-changing side the ladder does hold against the
+obvious routes — for a representative attacker goal, four of five realizations
+(direct click, fill-then-Enter, injected JavaScript, batch-smuggled click) are
+stopped. So: not "this gate does nothing", and not "this gate contains attacks".
+It forces a decision at a boundary we can draw precisely and have published.
 
 ## Why we publish the failures
 

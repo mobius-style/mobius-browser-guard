@@ -5,8 +5,10 @@ A drop-in permission gate for **Claude in Chrome** browser tools, driven by an
 
 > **Read [`POSITIONING.md`](POSITIONING.md) first.** This is an *auditable,
 > bounded mediation layer*, not a safety guarantee. Its evaluation found that
-> every one of 63 corpus attacker goals stays reachable inside the allow tier.
-> We publish that rather than hide it — see [`eval/`](eval/).
+> every one of 63 corpus attacker goals stays reachable inside the allow tier —
+> mostly via reading, which is declared scope, but two genuine gaps remain. We
+> publish that rather than hide it; see [`eval/`](eval/) for what holds and what
+> does not.
 
 Browser agents run inside your logged-in session. A malicious page can hide
 instructions in its own text, and if the model follows them, the agent acts with
@@ -157,8 +159,12 @@ adversarial review in which three independent reviewers were told to refute our
 own findings.
 
 The headline result is negative and it is about this gate: **all 63 goals have a
-realization that stays inside the allow tier.** Three reviewers unanimously
-refuted the reading-based paths as declared scope rather than defects, and then
+realization that stays inside the allow tier.** Most of that is reading, which
+three reviewers unanimously judged to be declared scope rather than a defect;
+strip it and two real gaps remain (a form that commits on input, on a site the
+user allowlisted; and a short query string to an allowlisted host). Against
+state-changing goals the ladder holds on the obvious routes — four of five
+realizations of a representative attack are stopped. The same reviewers then
 found four channels we had missed that were worse — screenshot-to-upload,
 recording export, writing into the attacker's own DOM, and subdomain matching
 that let one allowlist entry cover attacker-registrable hosts. Those are fixed
