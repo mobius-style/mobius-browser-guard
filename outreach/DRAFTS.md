@@ -1,8 +1,8 @@
 # Outreach drafts — not posted
 
 Drafts only. Posting is the owner's decision; nothing here has been published to
-any external platform. Every number is from `eval/results.json` at policy
-v0.3.0 or from a verdict re-run against `guard.py`.
+any external platform. Every number is from
+`eval/results_policy_v0.3.1.json` or from a verdict re-run against `guard.py`.
 
 Figure for both posts: `outreach/figure.html` (published privately as an
 artifact; export to PNG before posting, since neither platform renders HTML).
@@ -38,18 +38,19 @@ refute us, unanimously ruled that reading an authenticated page is what a
 browser agent is *for*. The third is a genuine gap: forms that commit on input,
 with no click to gate.
 
-The reviewers then found four channels we'd missed. The sharpest: a screenshot
+The reviewers then found five channels we'd missed. The sharpest: a screenshot
 of your authenticated banking page can be dragged onto an upload box on the
 attacker's own page, with no gated action anywhere.
 
-We fixed those. Then a second review round examined the paper — and found our
-fix had opened a worse hole than the one it closed. The component we'd added
+We fixed four of them. Then a second review round examined the paper — and found
+our fix had opened a worse hole than the one it closed. The component we'd added
 learned which site each tab was on by scanning tool output, so a malicious page
-could forge its own identity by printing one line in its body.
+could forge its own identity by printing one line in its body. A third round
+found our fix for *that* was incomplete too.
 
-That is the lesson worth passing on: **a fix written in response to a finding
-needs the same adversarial review as the thing it fixes.** Ours didn't get one,
-and shipped a critical hole for a day.
+Twice in a row, a fix written in response to a finding carried a hole of the
+same class as the one it closed. That is the lesson worth passing on: **a fix
+needs the same adversarial review as the thing it fixes.**
 
 The gate is MIT-licensed and installable in about ten minutes. Its residual
 attack surface is published alongside it, because a security tool that only
@@ -64,7 +65,7 @@ github.com/mobius-style/mobius-browser-guard
 **Draft B — the shorter, method-first version**
 
 Three independent reviewers, told to refute my findings, rejected three of them
-as non-issues — then found four holes I'd missed that were worse than anything
+as non-issues — then found five holes I'd missed that were worse than anything
 I'd predicted.
 
 That's the whole story of shipping a security layer for browser agents this
@@ -80,8 +81,9 @@ The finding: three patterns defeat it, covering all 63 attacker goals in the
 corpus I tested against. Two are declared scope. One is real.
 
 The uncomfortable part: my fix for the reviewers' findings introduced a worse
-hole than it closed, caught only because I ran a second adversarial round — on
-the paper, not the code.
+hole than it closed — and my fix for *that* was incomplete. Both caught only
+because I kept running adversarial rounds, the later ones on the paper rather
+than the code.
 
 Published with its residual attack surface, its deviations, and its reviewer
 records: github.com/mobius-style/mobius-browser-guard
@@ -134,5 +136,5 @@ part worth reading.
 - Do not claim novelty of mechanism: CaMeL, the design-pattern catalogue and the
   dual-LLM pattern all occupy this position already. The contribution is the
   measurement of the coarse, post-hoc, installable version — and the failures.
-- Keep every number traceable to `eval/results.json`. If a number can't be
+- Keep every number traceable to `eval/results_policy_v0.3.1.json`. If a number can't be
   traced, cut it.
