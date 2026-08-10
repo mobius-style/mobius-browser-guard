@@ -1,0 +1,29 @@
+{
+  "version": "0.1.0",
+  "frozen": false,
+  "domain_allowlist": ["example.com", "localhost", "127.0.0.1"],
+  "navigate_offlist_decision": "ask",
+  "computer_read_actions": ["screenshot", "wait", "scroll", "zoom", "scroll_to", "hover"],
+  "computer_act_decision": "ask",
+  "tiers": {
+    "read_page":              {"decision": "allow", "reason": "read-only (writes:0)"},
+    "get_page_text":          {"decision": "allow", "reason": "read-only (writes:0)"},
+    "find":                   {"decision": "allow", "reason": "read-only (writes:0)"},
+    "read_console_messages":  {"decision": "allow", "reason": "read-only (writes:0)"},
+    "read_network_requests":  {"decision": "allow", "reason": "read-only (writes:0)"},
+    "tabs_context_mcp":       {"decision": "allow", "reason": "read-only (writes:0)"},
+    "list_connected_browsers":{"decision": "allow", "reason": "read-only (writes:0)"},
+    "shortcuts_list":         {"decision": "allow", "reason": "read-only (writes:0)"},
+    "tabs_create_mcp":        {"decision": "allow", "reason": "window mgmt (writes:1)"},
+    "tabs_close_mcp":         {"decision": "allow", "reason": "window mgmt (writes:1)"},
+    "resize_window":          {"decision": "allow", "reason": "window mgmt (writes:1)"},
+    "select_browser":         {"decision": "allow", "reason": "session routing (writes:1)"},
+    "switch_browser":         {"decision": "allow", "reason": "session routing, user-confirmed in-browser (writes:1)"},
+    "form_input":             {"decision": "allow", "reason": "form write, reversible until submit (writes:3, logged)"},
+    "upload_image":           {"decision": "allow", "reason": "image paste into page (writes:3, logged)"},
+    "gif_creator":            {"decision": "allow", "reason": "local recording (writes:1)"},
+    "file_upload":            {"decision": "ask",   "reason": "local file exfiltration channel (writes:4)"},
+    "javascript_tool":        {"decision": "ask",   "reason": "arbitrary JS in page context (writes:5)"},
+    "shortcuts_execute":      {"decision": "ask",   "reason": "opaque composite action (writes:4)"}
+  }
+}
