@@ -219,9 +219,13 @@ def record_tab_origin(event):
     text = resp if isinstance(resp, str) else json.dumps(resp)
     text = text.replace('\\"', '"')       # survive a JSON-encoded response
     # Parse only the trailing context block the harness appends, never the body.
+    # Absent that block, learn nothing: an earlier version fell back to scanning
+    # the whole response, and a tool result can echo an attacker-chosen URL, so
+    # the fallback was itself a forgery channel.
     marker = text.rfind("Tab Context:")
-    if marker >= 0:
-        text = text[marker:]
+    if marker < 0:
+        return
+    text = text[marker:]
     tabs = load_tabs()
     # "• tabId 123: "Title" ("https://host/path")" — the context block the
     # Chrome tools append to their output.
