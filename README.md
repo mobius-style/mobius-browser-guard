@@ -3,6 +3,11 @@
 A drop-in permission gate for **Claude in Chrome** browser tools, driven by an
 **action ladder** instead of attack detection.
 
+> **Read [`POSITIONING.md`](POSITIONING.md) first.** This is an *auditable,
+> bounded mediation layer*, not a safety guarantee. Its evaluation found that
+> every one of 63 corpus attacker goals stays reachable inside the allow tier.
+> We publish that rather than hide it — see [`eval/`](eval/).
+
 Browser agents run inside your logged-in session. A malicious page can hide
 instructions in its own text, and if the model follows them, the agent acts with
 your cookies, your account, and your authority. The usual defence is to *detect*
