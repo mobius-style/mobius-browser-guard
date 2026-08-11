@@ -232,6 +232,13 @@ deviations from our registration, and two rounds in which a fix we published
 carried a hole of the same class as the one it closed. Read it before relying on
 this.
 
+## Practical kits
+
+The operational discipline behind this project — abstain gates, kill switches,
+regression evals, rollback — is available as a practical audit kit for small
+teams: [free 25-point checklist](https://toeda.gumroad.com/l/free-checklist) ·
+[full kit + monthly safety briefing](https://toeda.gumroad.com/l/safety-briefing).
+
 ## License
 
 MIT
